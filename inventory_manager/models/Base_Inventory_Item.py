@@ -9,6 +9,6 @@ class Base_Inventory_Item(models.Model):
     quantity = models.PositiveIntegerField()
 
     class Meta:
-        abastract = True
+        abstract = True
 
 
