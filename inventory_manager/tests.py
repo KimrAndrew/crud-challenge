@@ -14,7 +14,6 @@ class ManufacturerTestCase(TestCase):
 class InventoryItemTest(TestCase):
     def test_instantiate_Inventory_Item(self):
         manufacturer = Manufacturer.objects.create(name='Gucci')
-        manufacturer_id = manufacturer.id
 
         item_name = 'Slides'
         item_description = 'The coolest slides in town'
@@ -28,6 +27,7 @@ class InventoryItemTest(TestCase):
             quantity= quantity,
             manufacturer = manufacturer
             )
+            
         self.assertEqual(item.name,item_name)
         self.assertEqual(item.description, item_description)
         self.assertEqual(item.price,price)
