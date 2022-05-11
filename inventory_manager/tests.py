@@ -2,6 +2,7 @@ from django.test import TestCase
 from inventory_manager.models.Customer import Customer
 
 from inventory_manager.models.Inventory_Item import Inventory_Item
+from inventory_manager.models.Merchant import Merchant
 from .models.Manufacturer import Manufacturer
 
 # Create your tests here.
@@ -45,3 +46,10 @@ class CustomerTest(TestCase):
         self.assertEqual(customer.first_name, customer_first_name)
         self.assertEqual(customer.last_name, customer_last_name)
         self.assertEqual(customer.address, customer_address)
+
+class MerchantTest(TestCase):
+    def test_instantiate_merchant(self):
+        merchant_name = 'Amazon'
+        merchant = Merchant(name='Amazon')
+
+        self.assertEqual(merchant.name, merchant_name)
