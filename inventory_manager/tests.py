@@ -8,3 +8,4 @@ class ManufacturerTestCase(TestCase):
         nike = Manufacturer.objects.create(name='Nike')
         self.assertEquals(gucci.name, 'Gucci')
         self.assertEqual(nike.name, 'Nike')
+
