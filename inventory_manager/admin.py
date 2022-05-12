@@ -8,4 +8,4 @@ from inventory_manager.models.Customer import Customer
 from inventory_manager.models.Merchant import Merchant
 
 # Register your models here.
-admin.register(Customer, Manufacturer, Inventory_Item,Merchant)
+admin.site.register([Customer, Manufacturer, Inventory_Item,Merchant])
