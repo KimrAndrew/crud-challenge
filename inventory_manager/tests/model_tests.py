@@ -3,7 +3,7 @@ from inventory_manager.models.Customer import Customer
 
 from inventory_manager.models.Inventory_Item import Inventory_Item
 from inventory_manager.models.Merchant import Merchant
-from .models.Manufacturer import Manufacturer
+from ..models.Manufacturer import Manufacturer
 
 # Create your tests here.
 class ManufacturerTestCase(TestCase):
@@ -53,3 +53,5 @@ class MerchantTest(TestCase):
         merchant = Merchant(name='Amazon')
 
         self.assertEqual(merchant.name, merchant_name)
+
+# TODO Add Tests for Views and Serializers
