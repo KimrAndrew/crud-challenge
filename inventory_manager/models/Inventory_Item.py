@@ -1,5 +1,4 @@
-from django.db import models
-from .Base_Inventory_Item import Base_Inventory_Item
+from .Base_Inventory_Item import BaseInventoryItem
 
-class Inventory_Item(Base_Inventory_Item):
+class InventoryItem(BaseInventoryItem):
     pass

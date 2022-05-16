@@ -1,8 +1,13 @@
 from django.db import models
-from .Manufacturer import Manufacturer
 
-class Base_Inventory_Item(models.Model):
-    manufacturer = models.OneToOneField(Manufacturer, on_delete=models.CASCADE)
+class BaseInventoryItem(models.Model):
+    """
+    Fields:
+    - name: str
+    - description: str
+    - price: int
+    - quantity: int
+    """
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=256)
     price = models.PositiveIntegerField()
