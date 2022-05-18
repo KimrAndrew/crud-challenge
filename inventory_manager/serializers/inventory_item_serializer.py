@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from ..models.Inventory_Item import Inventory_Item
+from ..models.Inventory_Item import InventoryItem
 
 class Inventory_Item_Serializer(ModelSerializer):
     class Meta:
-        model = Inventory_Item
-        fiels = '__all__'
+        model = InventoryItem
+        fields = '__all__'

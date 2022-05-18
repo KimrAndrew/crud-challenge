@@ -1,15 +1,13 @@
-from rest_framework.views import APIView
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from inventory_manager.models.Inventory_Item import Inventory_Item
+from inventory_manager.models.Inventory_Item import InventoryItem
 from inventory_manager.serializers.inventory_item_serializer import Inventory_Item_Serializer
 
 # Create your views here.
-class Inventory_Item_Detail(APIView):
-    
-    def post(self,request):
-        print(request.data)
+class Inventory_Item_Detail(RetrieveUpdateDestroyAPIView):
+    queryset = InventoryItem.objects.all()
+    serializer_class=Inventory_Item_Serializer
 
-class Invetory_Item_List(ListCreateAPIView):
-    queryset = Inventory_Item.objects.all()
-    serializer = Inventory_Item_Serializer
+class Inventory_Item_List(ListCreateAPIView):
+    queryset = InventoryItem.objects.all()
+    serializer_class = Inventory_Item_Serializer
