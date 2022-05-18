@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #Local Apps
     'inventory_manager',
+    'warehouse_manager',
 ]
 
 MIDDLEWARE = [
