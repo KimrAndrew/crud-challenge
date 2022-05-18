@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Warehouse, WarehouseInventoryItem
+from ..models import Warehouse, WarehouseInventoryItem
 from inventory_manager.models.Inventory_Item import InventoryItem
 
 class WarehouseTestCase(TestCase):
