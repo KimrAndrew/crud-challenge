@@ -3,10 +3,13 @@ from inventory_manager.models.Inventory_Item import InventoryItem
 
 class Warehouse(models.Model):
     location = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return self.location
 
 class WarehouseInventoryItem(models.Model):
     warehouse = models.OneToOneField(Warehouse, on_delete=models.CASCADE)
-    item = models.OneToOneField(InventoryItem, on_delete=models.CASCADE)
+    item = models.ForeignKey(InventoryItem, on_delete=models.CASCADE)
     warehouse_inventory = models.PositiveIntegerField(default=0)
     
     def request_item(self, requested_quantity:int):
