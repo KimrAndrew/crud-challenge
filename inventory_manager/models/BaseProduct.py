@@ -1,6 +1,6 @@
 from django.db import models
 
-class BaseInventoryItem(models.Model):
+class BaseProduct(models.Model):
     """
     Fields:
     - name: str
@@ -11,7 +11,6 @@ class BaseInventoryItem(models.Model):
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=256)
     price = models.PositiveIntegerField()
-    quantity = models.PositiveIntegerField()
 
     class Meta:
         abstract = True

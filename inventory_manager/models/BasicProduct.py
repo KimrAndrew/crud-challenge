@@ -1,6 +1,6 @@
-from .Base_Inventory_Item import BaseInventoryItem
+from .BaseProduct import BaseProduct
 
-class InventoryItem(BaseInventoryItem):
+class BasicProduct(BaseProduct):
     """
     Fields:
     - name: str
