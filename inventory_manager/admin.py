@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from inventory_manager.models.Inventory_Item import InventoryItem
+from inventory_manager.models.BasicProduct import BasicProduct
 
 
 # Register your models here.
-admin.site.register([InventoryItem])
+admin.site.register([BasicProduct])

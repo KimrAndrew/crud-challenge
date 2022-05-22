@@ -1,6 +1,6 @@
 from django.test import TestCase
 from ..models import Warehouse, WarehouseInventoryItem
-from inventory_manager.models.Inventory_Item import InventoryItem
+from inventory_manager.models.BasicProduct import BasicProduct
 
 class WarehouseTestCase(TestCase):
     def test_instantiate_warehouse(self):
@@ -11,7 +11,7 @@ class WarehouseTestCase(TestCase):
 class WarehouseItemTestCase(TestCase):
 
     def setUp(self) -> None:
-        self.global_coffee = InventoryItem(
+        self.global_coffee = BasicProduct(
             name="coffee",
             description="bitter",
             quantity = 500,

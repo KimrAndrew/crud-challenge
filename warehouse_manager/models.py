@@ -1,5 +1,14 @@
 from django.db import models
-from inventory_manager.models.BasicProduct import BasicProduct
+from inventory_manager.models.BasicProduct import BasicProduct, BaseProduct
+
+class WarehouseItemQuerySet(models.QuerySet):
+    
+    def allocated_products(self,product:BaseProduct) -> models.QuerySet:
+        return WarehouseInventoryItem.objects.filter('item__id' == product.id)
+
+    def product_quantity(self,product:BaseProduct):
+        return self.allocated_products(product).aggregate(models.Sum('quantity'))
+
 
 class Warehouse(models.Model):
     location = models.CharField(max_length=32)
@@ -8,10 +17,10 @@ class Warehouse(models.Model):
         return self.location
 
 
-class WarehouseInventoryItemManager(models.Manager):
+class WarehouseItemManager(models.Manager):
     pass
 
-class WarehouseInventoryItem(models.Model):
+class WarehouseItem(models.Model):
     warehouse = models.OneToOneField(Warehouse, on_delete=models.CASCADE)
     item = models.ForeignKey(BasicProduct, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=0)
@@ -24,7 +33,7 @@ class WarehouseInventoryItem(models.Model):
         else:
             raise ValueError(
                 f"Not Enough {self.item.name} in stock. Requested: {requested_quantity} {self.item.name}")
-                
+
     def return_item(self, returned_amount:int):
         if self.warehouse_inventory >= returned_amount:
             self.warehouse_inventory -= returned_amount

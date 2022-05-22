@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.filters import BaseFilterBackend
 
 from .models import WarehouseInventoryItem, Warehouse
-from inventory_manager.models.Inventory_Item import InventoryItem
+from inventory_manager.models.BasicProduct import BasicProduct
 from .serializers import WarehouseInventoryItemSerializer, WarehouseSerializer
 
 class Warehouse_Item_Detail(RetrieveUpdateDestroyAPIView):
@@ -17,7 +17,7 @@ class Warehouse_Item_List(APIView):
         return Warehouse.objects.filter(id=warehouse)[0]
 
     def _get_global_item(self,item_id):
-        return InventoryItem.objects.filter(id=item_id)
+        return BasicProduct.objects.filter(id=item_id)
         
     def get(self,request,warehouse):
         warehouse = Warehouse.objects.filter(id=warehouse)[0]
@@ -29,7 +29,7 @@ class Warehouse_Item_List(APIView):
         # get the warehouse whose inventory is being accessed
         warehouse= Warehouse.objects.filter(id=warehouse)[0]
         # get the global item being accessed
-        item = InventoryItem.objects.filter(id=request.data.get("item"))[0]
+        item = BasicProduct.objects.filter(id=request.data.get("item"))[0]
         # add item to warehouse inventory or update if already present
         WarehouseInventoryItem.objects.update_or_create(warehouse=warehouse, item=item, defaults={'quantity':request.data.get('quantity')})
         return Response(request.data)
