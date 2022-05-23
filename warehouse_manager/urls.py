@@ -1,6 +1,6 @@
 from django.urls import path
 
-from warehouse_manager.models import WarehouseInventoryItem
+from warehouse_manager.models.WarehouseItem import WarehouseItem
 from .views import Warehouse_Item_Detail,Warehouse_Item_List,Warehouse_List,Warehouse_Detail
 
 urlpatterns = [

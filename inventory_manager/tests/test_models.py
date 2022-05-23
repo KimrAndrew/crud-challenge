@@ -1,24 +1,21 @@
 from django.test import TestCase
-from inventory_manager.models.BasicProduct import BasicProduct
+from inventory_manager.models.BaseProduct import BaseProduct
 
 
-class InventoryItemTest(TestCase):
-    def test_instantiate_BasicProduct(self):
+class BaseProductTest(TestCase):
+    def test_instantiate_BaseProduct(self):
         expected_item = {
             "item_name": 'Gucci Slides',
             "item_description": 'The coolest slides in town',
             "price": 500,
-            "quantity": 600
         }
 
-        product = BasicProduct.objects.create(
+        product = BaseProduct.objects.create(
             name='Gucci Slides',
             description='The coolest slides in town',
             price=500,
-            quantity= 600,
             )
 
         self.assertEqual(product.name,expected_item["item_name"])
         self.assertEqual(product.description, expected_item["item_description"])
         self.assertEqual(product.price,expected_item["price"])
-        self.assertEqual(product.quantity,expected_item['quantity'])

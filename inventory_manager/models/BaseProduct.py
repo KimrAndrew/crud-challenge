@@ -12,7 +12,7 @@ class BaseProduct(models.Model):
     description = models.CharField(max_length=256)
     price = models.PositiveIntegerField()
 
-    class Meta:
-        abstract = True
+    # class Meta:
+    #     abstract = True
 
 

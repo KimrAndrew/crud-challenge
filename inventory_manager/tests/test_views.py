@@ -1,20 +1,18 @@
-from rest_framework.test import APITestCase,RequestsClient
+from rest_framework.test import APITestCase
 from django.urls import reverse
 from rest_framework import status
 
-from inventory_manager.models.BasicProduct import BasicProduct
-from ..views import BasicProductDetail, BasicProductList
+from inventory_manager.models.BaseProduct import BaseProduct
 
 
 #TODO
 # - Test for Delete Inventory Item
 
-class InventoryItemTestCase(APITestCase):
+class ProductTestCase(APITestCase):
     def setUp(self) -> None:
         data = {
             'name': 'Macbook',
             'description': 'laptop',
-            'quantity': 350,
             'price': 1200
         }
         self.client.post('/inventory_manager/v1/products/',data)
@@ -22,7 +20,6 @@ class InventoryItemTestCase(APITestCase):
         data = {
             'name': 'Nike Airforce Ones',
             'description': 'Color: Black',
-            'quantity': 350,
             'price': 60
         }
         self.client.post('/inventory_manager/v1/products/',data)
@@ -32,7 +29,6 @@ class InventoryItemTestCase(APITestCase):
         data = {
             "name":"Gucci Slides",
             "description": "The coolest slides in town",
-            "quantity": 200,
             "price": 600
         }
 
@@ -54,12 +50,11 @@ class InventoryItemTestCase(APITestCase):
         data = {
             'name': 'Nike Airforce Ones',
             'description': 'Color: Black',
-            'quantity': 349,
-            'price': 60
+            'price': 65
         }
         response = self.client.put(reverse("basic_product_detail", kwargs={"pk": 2}),data)
         self.assertEqual(response.data["name"], "Nike Airforce Ones")
-        self.assertEqual(response.data["quantity"], 349)
+        self.assertEqual(response.data["price"], 65)
 
     def test_patch_inventory_item(self):
         data = {
