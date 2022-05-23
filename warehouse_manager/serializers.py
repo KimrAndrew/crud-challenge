@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
-from .models import WarehouseInventoryItem, Warehouse
+from .models import WarehouseItem, Warehouse
 
-class WarehouseInventoryItemSerializer(ModelSerializer):
+class WarehouseItemSerializer(ModelSerializer):
     class Meta:
-        model = WarehouseInventoryItem
+        model = WarehouseItem
         fields = '__all__'
 
 class WarehouseSerializer(ModelSerializer):
